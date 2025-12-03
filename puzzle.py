@@ -41,7 +41,7 @@ knowledge2 = And(
     Not(And(AKnight, AKnave)),
     # Checks to make sure B is either a knight or a knave and not both
     Or(BKnight, BKnave),
-    Not(And(BKnight,BKnave)),
+    Not(And(BKnight, BKnave)),
     Implication(AKnight, And(AKnight, BKnight)),
     Implication(AKnave, Not(And(AKnave, BKnave))),
     Implication(BKnight, Not(And(AKnight, BKnight))),
