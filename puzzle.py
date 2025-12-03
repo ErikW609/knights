@@ -12,9 +12,11 @@ CKnave = Symbol("C is a Knave")
 # Puzzle 0
 # A says "I am both a knight and a knave."
 knowledge0 = And(
+    # Checks to make sure A is either a knight or a knave and not both
     Or(AKnight, AKnave),
-    Not(And(AKnight,AKnave)),
-    Implication(AKnight, And(AKnight,AKnave)),
+    Not(And(AKnight, AKnave)),
+    # Checks to see if A's statement could be true
+    Implication(AKnight, And(AKnight, AKnave)),
     Implication(AKnave, Not(And(AKnight, AKnave)))
 )
 
@@ -23,9 +25,9 @@ knowledge0 = And(
 # B says nothing.
 knowledge1 = And(
     Or(AKnight, AKnave),
-    Not(And(AKnight,AKnave)),
+    Not(And(AKnight, AKnave)),
     Or(BKnight, BKnave),
-    Not(And(BKnight,BKnave)),
+    Not(And(BKnight, BKnave)),
     Implication(AKnave, Not(And(AKnave, BKnave))),
     Implication(AKnight, And(AKnave, BKnave)),
 )
@@ -34,14 +36,16 @@ knowledge1 = And(
 # A says "We are the same kind."
 # B says "We are of different kinds."
 knowledge2 = And(
+    # Checks to make sure A is either a knight or a knave and not both
     Or(AKnight, AKnave),
-    Not(And(AKnight,AKnave)),
+    Not(And(AKnight, AKnave)),
+    # Checks to make sure B is either a knight or a knave and not both
     Or(BKnight, BKnave),
     Not(And(BKnight,BKnave)),
-    Implication(AKnight, And(AKnight,BKnight)),
-    Implication(AKnave, Not(And(AKnave,BKnave))),
-    Implication(BKnight, Not(And(AKnight,BKnight))),
-    Implication(BKnave, And(AKnave,BKnave)),
+    Implication(AKnight, And(AKnight, BKnight)),
+    Implication(AKnave, Not(And(AKnave, BKnave))),
+    Implication(BKnight, Not(And(AKnight, BKnight))),
+    Implication(BKnave, And(AKnave, BKnave)),
 )
 
 # Puzzle 3
@@ -50,12 +54,15 @@ knowledge2 = And(
 # B says "C is a knave."
 # C says "A is a knight."
 knowledge3 = And(
+    # Checks to make sure A is either a knight or a knave and not both
     Or(AKnight, AKnave),
-    Not(And(AKnight,AKnave)),
+    Not(And(AKnight, AKnave)),
+    # Checks to make sure B is either a knight or a knave and not both
     Or(BKnight, BKnave),
-    Not(And(BKnight,BKnave)),
+    Not(And(BKnight, BKnave)),
+    # Checks to make sure C is either a knight or a knave and not both
     Or(CKnight, CKnave),
-    Not(And(CKnight,CKnave)),
+    Not(And(CKnight, CKnave)),
     Implication(AKnight, AKnight),
     Implication(AKnave, Not(AKnave)),
     Implication(BKnight, And(AKnave, CKnave)),
